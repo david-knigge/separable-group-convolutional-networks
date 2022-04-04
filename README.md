@@ -2,6 +2,8 @@
 
 This code accompanies the paper "Exploiting Redundancy: Separable Group Convolutional Networks on Lie Groups". Link to [arxiv](https://arxiv.org/abs/2110.13059).
 
+Requirements: see `environment.yml`.
+
 
 # Examples
 
