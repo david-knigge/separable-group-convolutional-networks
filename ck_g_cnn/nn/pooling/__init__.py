@@ -1,0 +1,2 @@
+from ck_g_cnn.nn.pooling.group_max_pooling import GroupMaxPoolingRn
+from ck_g_cnn.nn.pooling.adaptive_group_max_pooling import AdaptiveGroupMaxPooling
