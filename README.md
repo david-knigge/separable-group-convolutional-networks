@@ -4,7 +4,6 @@ This code accompanies the paper "Exploiting Redundancy: Separable Group Convolut
 
 Requirements: see `environment.yml`.
 
-
 # Examples
 
 To run an experiment with a G-CNN equivariant to SE(2), with 8 randomly sampled rotation elements and nonseparable kernels:
