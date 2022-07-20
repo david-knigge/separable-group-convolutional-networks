@@ -38,6 +38,7 @@ All experiments are run with `main.py`. See `config.py` for all available flags.
 ### Cite
 If you found this work useful in your research, please consider citing:
 
+```
 @InProceedings{pmlr-v162-knigge22a,
   title = 	 {Exploiting Redundancy: Separable Group Convolutional Networks on Lie Groups},
   author =       {Knigge, David M. and Romero, David W and Bekkers, Erik J},
@@ -47,6 +48,7 @@ If you found this work useful in your research, please consider citing:
   pdf = 	 {https://proceedings.mlr.press/v162/knigge22a/knigge22a.pdf},
   url = 	 {https://proceedings.mlr.press/v162/knigge22a.html},
 }
+```
 
 ### Run examples
 
