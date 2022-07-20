@@ -1,10 +1,52 @@
 # Exploiting Redundancy: Separable Group Convolutional Networks on Lie Groups
 
-This code accompanies the paper "Exploiting Redundancy: Separable Group Convolutional Networks on Lie Groups". Link to [arxiv](https://arxiv.org/abs/2110.13059).
+This code accompanies the paper ["Exploiting Redundancy: Separable Group Convolutional Networks on Lie Groups"](https://proceedings.mlr.press/v162/knigge22a.html).
 
-Requirements: see `environment.yml`.
+### Abstract
 
-# Examples
+Group convolutional neural networks (G-CNNs) have been shown to increase parameter efficiency and model accuracy by incorporating geometric inductive biases. In this work, we investigate the properties of representations learned by regular G-CNNs, and show considerable parameter redundancy in group convolution kernels. This finding motivates further weight-tying by sharing convolution kernels over subgroups. To this end, we introduce convolution kernels that are separable over the subgroup and channel dimensions. In order to obtain equivariance to arbitrary affine Lie groups we provide a continuous parameterisation of separable convolution kernels. We evaluate our approach across several vision datasets, and show that our weight sharing leads to improved performance and computational efficiency. In many settings, separable G-CNNs outperform their non-separable counterpart, while only using a fraction of their training time. In addition, thanks to the increase in computational efficiency, we are able to implement G-CNNs equivariant to the Sim(2) group; the group of dilations, rotations and translations of the plane. Sim(2)-equivariance further improves performance on all tasks considered, and achieves state-of-the-art performance on rotated MNIST.
+
+### Installation
+
+#### conda
+We provide an environment file; ``environment.yml`` containing the required dependencies. Clone the repo and run the following command in the root of this directory:
+```
+conda env create -f environment.yml
+```
+
+### Repository Structure
+This repository is organized as follows:
+- ``ck_g_cnn`` contains the main PyTorch library of our model.
+- ``datasets`` contains the datasets used in our experiments.
+- ``config.py`` contains the configuration in which to specify default arguments to be passed to the script.
+- ``demo`` contains two demo notebooks; ``visualizing_kernels.ipynb`` and ``visualizing_activations.ipynb``, which contains example code for usage of the modules defined in this repo, and may help to build an intuitive understanding of regular group convolutional networks.
+
+### Using the code
+
+All experiments are run with `main.py`. Flags are handled by [Hydra](https://hydra.cc/docs/intro).
+See `cfg/config.yaml` for all available flags. Flags can be passed as `xxx.yyy=value`.
+
+#### Useful flags
+
+- `net.*` describes settings for the models (model definition `models/resnet.py`).
+- `kernel.*` describes settings for the MAGNet kernel generator networks.
+- `mask.*` describes settings for the FlexConv Gaussian mask.
+- `conv.*` describes settings for the convolution operation. It can be used to switch between FlexConv, CKConv, regular Conv, and their separable variants.
+- `dataset.*` specifies the dataset to be used, as well as variants, e.g., permuted, sequential.
+- `train.*` specifies the settings used for the Trainer of the models.
+- `train.do=False`: Only test the model. Useful in combination with pre-training.
+- `optimizer.*` specifies and configures the optimizer to be used.
+- `debug=True`: By default, all experiment scripts connect to Weights & Biases to log the experimental results. Use this flag to run without connecting to Weights & Biases.
+- `pretrained.*`: Use these to load checkpoints before training.
+
+### Reproducing experiments
+Please see the [experiments README](/experiments/README.md) for details on reproducing the paper's experiments.
+
+### Cite
+If you found this work useful in your research, please consider citing:
+
+
+## Examples
 
 To run an experiment with a G-CNN equivariant to SE(2), with 8 randomly sampled rotation elements and nonseparable kernels:
 ```
